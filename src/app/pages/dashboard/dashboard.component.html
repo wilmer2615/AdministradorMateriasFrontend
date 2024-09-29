@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <div class="container">
     <div class="content">
         <h2><span><strong>Estudiante: </strong> {{name}}</span></h2>
@@ -14,6 +13,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Profesor</th>
                     <th scope="col">Creditos</th>
+                    <th scope="col" class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +22,12 @@
                     <td>{{ course.courseName }}</td>
                     <td>{{ course.teacherName }}</td>
                     <td>{{ course.credits }}</td>
+                    <td class="text-center">
+                        <i class="fa-solid fa-trash-can text-danger" (click)="deleteRegisterCourse(course.courseId)"></i>
+                        <button type="button" class="btn btn-dark" (click)="studentsList(course.courseId)">
+                            Integrantes
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

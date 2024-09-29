@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from '../environments/environments.dev';
 import { CoursesResult } from '../models/coursesResult.model';
@@ -27,5 +27,9 @@ export class CourseService {
 
   getCreditsByStudent(id: number):Observable<Credits>{
     return this.http.get<Credits>(`${environments.endPointStudent}${environments.controllerStudent}/credits-student/${id}`);
+  }
+
+  deleteRegisterCourse(studentId: number, courseId: number){
+    return this.http.delete(`${environments.endPointStudent}${environments.controllerRegisteredCourse}/${studentId}/${courseId}`);
   }
 }

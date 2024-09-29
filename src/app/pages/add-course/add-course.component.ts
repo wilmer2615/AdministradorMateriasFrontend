@@ -24,7 +24,6 @@ export class AddCourseComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCourseByTeacher();
-    console.log('llego a modal', this.account);
   }
 
   getCourseByTeacher() {

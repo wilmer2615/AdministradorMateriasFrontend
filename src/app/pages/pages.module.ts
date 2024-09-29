@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { CourseGroupComponent } from './course-group/course-group.component';
 
 
 
@@ -10,7 +10,7 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
   declarations: [
     AddCourseComponent,
     DashboardComponent,
-    NavbarComponent
+    CourseGroupComponent
   ],
   imports: [
     CommonModule,

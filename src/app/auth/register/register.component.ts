@@ -40,7 +40,6 @@ export class RegisterComponent {
           title: "Registro exitoso"
         })
         this.registerForm.reset();
-        this.router.navigate(['/dashboard']);
       }
     })
   }
@@ -52,5 +51,9 @@ export class RegisterComponent {
     if (emailValue) {
       emailControl?.setValue(emailValue.toLowerCase(), { emitEvent: false });
     }
-  }  
+  }
+
+  redirecTo(){
+    this.router.navigate(['/login']);
+  }
 }

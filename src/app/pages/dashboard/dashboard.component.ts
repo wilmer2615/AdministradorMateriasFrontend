@@ -6,6 +6,8 @@ import { AddCourseComponent } from '../add-course/add-course.component';
 import { Student } from '../../models/student.model';
 import { CourseService } from '../../services/course.service';
 import { CoursesResult } from '../../models/coursesResult.model';
+import { CourseGroupComponent } from '../course-group/course-group.component';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private accountService = inject(AccountService);
   private courseService = inject(CourseService);
   private getAccountSubscription: Subscription | undefined;
+  faTrash = faTrash;
 
   constructor(private modalService: NgbModal) { }
 
@@ -69,7 +72,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       if (resp) {
         this.coursesList = resp;
         this.usedCredits = resp.reduce((accumulator, course) => accumulator + course.credits, 0);
-        console.log('creditos', this.usedCredits);
       }
     })
     this.courseService.getCreditsByStudent(this.account.id!).subscribe(resp => {
@@ -77,5 +79,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
+  studentsList(courseId:number) {
+    const modalOptions: NgbModalOptions = {
+      backdrop: 'static',
+      keyboard: false,
+      size: 'sm'
+    };
+
+    const modalRef = this.modalService.open(CourseGroupComponent, modalOptions);
+    modalRef.componentInstance.courseId = courseId;   
+  }
+
+  deleteRegisterCourse(courseId: number){
+    this.courseService.deleteRegisterCourse(this.account.id!, courseId).subscribe(resp => {
+        this.getRegisteredCourses();
+    })
+  }
 
 }

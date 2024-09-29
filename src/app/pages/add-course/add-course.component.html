@@ -19,7 +19,7 @@
                 <tr *ngFor="let course of courses">
                     <td>{{ course.courseName }}</td>
                     <td>{{ course.teacherName }}</td>
-                    <td>{{ course.credits }}</td>                    
+                    <td>{{ course.credits }}</td>
                     <td>{{ course.studentsByCourse }}</td>
                     <td>
                         <button type="button" class="btn btn-dark" (click)="addCourse(course)" [disabled]="course.credits > (creditsByStudent-usedCredits)">
@@ -31,7 +31,7 @@
         </table>
     </div>
 </div>
-<div class="modal-footer">
-    <p class="text-start">Creditos del estudiantes {{creditsByStudent}}, creditos usados {{usedCredits}}</p>
+<div class="modal-footer d-flex justify-content-between">
+    <p>Creditos del estudiantes {{creditsByStudent}}, creditos usados {{usedCredits}}</p>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Cerrar</button>
 </div>
